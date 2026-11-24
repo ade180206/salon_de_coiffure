@@ -8,14 +8,15 @@
 </head>
 <body>
 
-    <h1>CONNECTEZ-VOUS</h1>
+    <h1 align="center" class="form-title">CONNECTEZ-VOUS</h1>
 
     @if (session('status'))
         <p>{{ session('status') }}</p>
     @endif
 
-    <form method="POST" action="{{ route('login.store') }}">
-        @csrf
+    <div class="form-container" align="center">
+        <form method="POST" action="{{ route('login.store') }}">
+            @csrf
 
         <div>
             <label for="email">Email :</label>
@@ -26,19 +27,23 @@
                 value="{{ old('email') }}"
                 required
                 autofocus
+                class="form-input" 
+                placeholder="example@email.com"
             >
             @error('email')
                 <p>{{ $message }}</p>
             @enderror
         </div>
 
-        <div>
+        <div >
             <label for="password">Mot de passe :</label>
             <input
                 type="password"
                 id="password"
                 name="password"
                 required
+                class="form-input"
+                placeholder="entrer votre mot de passe"
             >
             @error('password')
                 <p>{{ $message }}</p>
